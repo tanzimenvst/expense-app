@@ -63,7 +63,7 @@ The app stores data in localStorage with this structure:
     "allocations": {
       "House": 10000,
       "Gas": 2000,
-      ...
+      "Electricity": 1500
     },
     "expenses": [
       {
@@ -71,10 +71,13 @@ The app stores data in localStorage with this structure:
         "category": "Grocery",
         "amount": 500
       },
-      ...
+      {
+        "date": "YYYY-MM-DD",
+        "category": "Fish/Meat",
+        "amount": 800
+      }
     ]
-  },
-  ...
+  }
 }
 ```
 
@@ -89,4 +92,4 @@ The app stores data in localStorage with this structure:
 
 ## Author
 
-Developed by **Tanzim**. Feel free to connect!
+Developed by **Tanzim**. Feel free to connect !
