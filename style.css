@@ -1,0 +1,137 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  margin-bottom: 1.5rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.clickable {
+  cursor: pointer;
+  background-color: #e9ecef;
+  transition: background-color 0.2s ease;
+}
+
+.clickable:hover {
+  background-color: #b9c1c9;
+}
+
+.main-part {
+  background-color: #e9ecef;
+}
+
+.aloc {
+  color: purple;
+}
+
+.edit-btn {
+  min-width: 75px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.form-control, .form-select {
+  border-radius: 0.5rem;
+  border: 1px solid #dee2e6;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.input-group-text {
+  font-family: "Inter", sans-serif;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.table {
+  border-collapse: separate;
+  border-spacing: 0 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.table th, .table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border-top: none;
+}
+
+.table tr {
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.table tr:hover {
+  transform: scale(1.01);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table tr:first-child {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.table tr th {
+  font-weight: bold;
+  color: #6c757d;
+  text-align: left;
+}
+
+.table-sm .form-control-sm {
+  height: calc(1.8125rem + 2px);
+}
+
+.form-control-plaintext {
+  background-color: #f8f9fa;
+  padding: 0.375rem 0.75rem;
+  text-indent: 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+}
+
+.btn {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.save-btn {
+  width: 100px;
+  background-color: #befad2;
+  margin-right: 15px;
+}
+
+.cancel-btn {
+  width: 100px;
+  background-color: #ffb7bf;
+  margin-left: 15px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .card {
+    border-radius: 0.75rem;
+  }
+}

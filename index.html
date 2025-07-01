@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense App</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icons/icon-192.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container py-4">
+
+      <!-- Expense Submission Form -->
+      <div class="card p-3 mb-4">
+        <form id="expense-form" class="row g-2">
+
+          <!-- Category Selector -->
+          <div class="col-8">
+            <select class="form-select" id="category" required>
+              <option value="Grocery">Grocery</option>
+              <option value="Veg">Veg</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Fish/Meat">Fish/Meat</option>
+              <option value="Chal">Chal</option>
+              <option value="Tour">Tour</option>
+              <option value="Self">Self</option>
+              <option value="House">House</option>
+              <option value="Gas">Gas</option>
+              <option value="Electricity">Electricity</option>
+              <option value="Extra">Extra</option>
+            </select>
+          </div>
+
+          <!-- Edit button -->
+          <div class="col-4 text-end">
+            <div class="input-group justify-content-end">
+              <button id="export-csv-btn" class="btn btn-outline-secondary">💾</button>
+              <button class="btn btn-outline-secondary edit-btn" type="button" id="edit">🛠️</button>
+            </div>
+          </div>
+          
+          <!-- Amount -->
+          <div class="col-8">
+            <div class="input-group">
+              <input type="number" class="form-control" id="amount" placeholder="Amount" required />
+              <span class="input-group-text fw-bold">৳</span>
+            </div>
+          </div>
+
+          <!-- Date -->
+          <div class="col-8">
+            <input type="date" class="form-control" id="date" required />
+          </div>
+
+          <!-- Submission -->
+          <div class="col-4 text-end">
+            <button type="submit" class="btn btn-primary">Add Expense</button>
+          </div>
+        </form>
+      </div>
+
+
+
+      <!-- Month Switcher -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <button class="btn btn-outline-secondary btn-sm" id="prev-month">&lt; Prev</button>
+        <h5 id="current-month" class="mb-0 fw-bold">Month</h5>
+        <button class="btn btn-outline-secondary btn-sm" id="next-month">Next &gt;</button>
+      </div>
+
+
+      <!-- Main View -->
+      <div id="main-view">
+        <div class="card p-4 mb-4">
+          <h5 class="mb-0 text-center">Monthly Summary</h5>
+          <div class="row text-center mt-3 border rounded border-warning main-part" id="total">
+            <div class="col border-end py-2 fw-bold">Total</div>
+            <div class="col border-end py-2 fw-bold aloc">0</div>
+            <div class="col border-end py-2 fw-bold">0</div>
+            <div class="col py-2 fw-bold">0</div>
+          </div>
+        </div>
+
+        <div class="card p-4 mb-4">
+          <h5 class="mb-0 text-center">All Expenses</h5>
+
+          <!-- Bills Group Summary -->
+          <div class="row text-center mt-3 border rounded border-info clickable" id="bills-group-summary">
+            <div class="col border-end py-2 fw-bold">Bills</div>
+            <div class="col border-end py-2 aloc">0</div>
+            <div class="col border-end py-2">0</div>
+            <div class="col py-2">0</div>
+          </div>
+
+          <!-- Bills Details -->
+          <div id="bills-details" class="hidden">
+            <!-- House -->
+            <div class="row text-center mt-1" id="house-row">
+              <div class="col-3 border-end py-2">House</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 py-2">0</div>
+            </div>
+            <!-- Gas -->
+            <div class="row text-center mt-1" id="gas-row">
+              <div class="col-3 border-end py-2">Gas</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 py-2">0</div>
+            </div>
+            <!-- Electricity -->
+            <div class="row text-center mt-1" id="electricity-row">
+              <div class="col-3 border-end py-2">Electricity</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 py-2">0</div>
+            </div>
+          </div>
+
+
+          <!-- Bazar Group Summary -->
+          <div class="row text-center mt-3 border rounded border-info clickable" id="bazar-group-summary">
+            <div class="col border-end py-2 fw-bold">Bazar</div>
+            <div class="col border-end py-2 aloc">0</div>
+            <div class="col border-end py-2">0</div>
+            <div class="col py-2">0</div>
+          </div>
+
+          <!-- Bazar Details -->
+          <div id="bazar-details" class="hidden">
+            <!-- Chal -->
+            <div class="row text-center mt-1" id="chal-row">
+              <div class="col-3 border-end py-2">Chal</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 py-2">0</div>
+            </div>
+            <!-- Fish/Meat -->
+            <div class="row text-center mt-1" id="fish-meat-row">
+              <div class="col-3 border-end py-2">Fish/Meat</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 py-2">0</div>
+            </div>
+            <!-- Veg -->
+            <div class="row text-center mt-1" id="veg-row">
+              <div class="col-3 border-end py-2">Veg</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 py-2">0</div>
+            </div>
+            <!-- Grocery -->
+            <div class="row text-center mt-1" id="grocery-row">
+              <div class="col-3 border-end py-2">Grocery</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 border-end py-2">0</div>
+              <div class="col-3 py-2">0</div>
+            </div>
+          </div>
+
+
+          <!-- Shopping -->
+          <div class="row text-center mt-3 border rounded border-info main-part" id="shopping-row">
+            <div class="col border-end py-2 fw-bold">Shopping</div>
+            <div class="col border-end py-2 aloc">0</div>
+            <div class="col border-end py-2">0</div>
+            <div class="col py-2">0</div>
+          </div>
+
+          <!-- Tour -->
+          <div class="row text-center mt-1 border rounded border-info main-part" id="tour-row">
+            <div class="col border-end py-2 fw-bold">Tour</div>
+            <div class="col border-end py-2 aloc">0</div>
+            <div class="col border-end py-2">0</div>
+            <div class="col py-2">0</div>
+          </div>
+
+          <!-- Self -->
+          <div class="row text-center mt-1 border rounded border-info main-part" id="self-row">
+            <div class="col border-end py-2 fw-bold">Self</div>
+            <div class="col border-end py-2 aloc">0</div>
+            <div class="col border-end py-2">0</div>
+            <div class="col py-2">0</div>
+          </div>
+        </div>
+
+        <div class="card p-4 mb-4">
+          <!-- Gross Total Summary -->
+          <div class="row text-center mt-3 border rounded clickable" id="gross-group-summary">
+            <div class="col border-end py-2 fw-bold">Gross Total</div>
+            <div class="col py-2 fw-bold" id="gross-total">0</div>
+          </div>
+
+          <!-- Gross Total Details -->
+          <div id="gross-details" class="hidden">
+            <div class="row text-center mt-1">
+              <div class="col-3 border-end py-2">Future</div>
+              <div class="col-3 border-end py-2" id="future-value">0</div>
+              <div class="col-3 border-end py-2">Wifi</div>
+              <div class="col-3 py-2" id="wifi-value">0</div>
+            </div>
+            <div class="row text-center mt-1">
+              <div class="col-3 border-end py-2">Savings</div>
+              <div class="col-3 border-end py-2" id="savings-value">0</div>
+              <div class="col-3 border-end py-2">Home</div>
+              <div class="col-3 border-end py-2" id="home-value">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Edit View -->
+      <div id="items-view" class="card p-4 mb-4 hidden">
+        <!-- Edit Expenses section will be rendered here -->
+        <div id="items-list"></div>
+        <!-- Allowed Allocation section will be rendered here -->
+        <div id="allowed-list"></div>
+        <div class="text-center mt-3">
+          <button class="btn btn-outline-success me-2 save-btn" onclick="saveAllEdits()">✔</button>
+          <button class="btn btn-outline-danger cancel-btn" onclick="cancelEdits()">✖</button>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- App Logic -->
+    <script src="app.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .then(() => console.log("Service Worker registered"))
+          .catch((err) => console.error("Service Worker failed:", err));
+      }
+    </script>
+  </body>
+</html>
