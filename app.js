@@ -90,7 +90,7 @@ function renderItemsView(monthData) {
     row.innerHTML = `
       <td><input type="date" class="form-control form-control-sm" style="width: 115px;" value="${entry.date}" data-edit-date="${index}" /></td>
       <td>${entry.category}</td>
-      <td><input type="number" class="form-control form-control-sm" style="width: 80px;" value="${entry.amount}" data-edit-amount="${index}" /></td>
+      <td><input type="number" class="form-control form-control-sm" style="width: 70px;" value="${entry.amount}" data-edit-amount="${index}" /></td>
       <td><button class="btn btn-danger btn-sm" onclick="deleteItem(${index})">🗑️</button></td>
     `;
     tbody.appendChild(row);

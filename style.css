@@ -31,7 +31,7 @@ body {
 }
 
 .edit-btn {
-  min-width: 55.81px;
+  min-width: 50.81px;
 }
 
 .add-btn {
@@ -146,13 +146,7 @@ body {
 
   #main-view .row:not(#gross-group-summary):not(#gross-details) > .col-3:first-child,
   #main-view .row:not(#gross-group-summary):not(#gross-details) > .col:first-child {
-    flex: 0 0 calc(25% + 6px);
-    max-width: calc(25% + 6px);
-  }
-
-  #main-view .row:not(#gross-group-summary):not(#gross-details) > .col-3:not(:first-child),
-  #main-view .row:not(#gross-group-summary):not(#gross-details) > .col:not(:first-child) {
-    flex: 0 0 calc(25% - 2px);
-    max-width: calc(25% - 2px);
+    flex: 0 0 calc(25% + 9px);
+    max-width: calc(25% + 9px);
   }
 }
