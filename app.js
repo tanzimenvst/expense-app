@@ -73,7 +73,7 @@ function deleteItem(index) {
 // Render editable expense items
 function renderItemsView(monthData) {
   const section = document.getElementById("items-list");
-  section.innerHTML = '<h5 class="mt-4 mb-2 text-center">Edit Expenses</h5>';
+  section.innerHTML = '<h5 class="mt-3 mb-2 text-center">Edit Expenses</h5>';
 
   const table = document.createElement("table");
   table.className = "table table-sm";
@@ -88,9 +88,9 @@ function renderItemsView(monthData) {
   monthData.expenses.forEach((entry, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td><input type="date" class="form-control form-control-sm" value="${entry.date}" data-edit-date="${index}" /></td>
+      <td><input type="date" class="form-control form-control-sm" style="width: 115px;" value="${entry.date}" data-edit-date="${index}" /></td>
       <td>${entry.category}</td>
-      <td><input type="number" class="form-control form-control-sm" style="min-width: 75px;" value="${entry.amount}" data-edit-amount="${index}" /></td>
+      <td><input type="number" class="form-control form-control-sm" style="width: 80px;" value="${entry.amount}" data-edit-amount="${index}" /></td>
       <td><button class="btn btn-danger btn-sm" onclick="deleteItem(${index})">🗑️</button></td>
     `;
     tbody.appendChild(row);
@@ -141,7 +141,7 @@ function updateGroupTotalsLive() {
 // Render allocation editing view
 function renderAllowedView(monthData) {
   const section = document.getElementById("allowed-list");
-  section.innerHTML = '<h5 class="text-center mt-4 mb-2">Allowed Allocations</h5>';
+  section.innerHTML = '<h5 class="text-center mb-2">Allowed Allocations</h5>';
 
   const table = document.createElement("table");
   table.className = "table table-sm";
@@ -237,7 +237,7 @@ function renderAllowedView(monthData) {
   // Insert Gross Total row (readonly)
   const grossRow = document.createElement("tr");
   grossRow.innerHTML = `
-    <td class="fw-bold">Gross Total</td>
+    <td class="fw-bold" style="min-width: 150px">Gross Total</td>
     <td><input type="text" class="form-control-plaintext form-control-sm" readonly id="readonly-GrossTotal" value="${formatNumber(grossTotal)}"></td>
   `;
   tbody.appendChild(grossRow);

@@ -13,7 +13,7 @@
     <div class="container py-4">
 
       <!-- Expense Submission Form -->
-      <div class="card p-3 mb-4">
+      <div class="card p-3 mb-3">
         <form id="expense-form" class="row g-2">
 
           <!-- Category Selector -->
@@ -37,7 +37,7 @@
           <div class="col-4 text-end">
             <div class="input-group justify-content-end">
               <button id="export-csv-btn" class="btn btn-outline-secondary">💾</button>
-              <button class="btn btn-outline-secondary" type="button" id="edit">🛠️</button>
+              <button class="btn btn-outline-secondary edit-btn" type="button" id="edit">🛠️</button>
             </div>
           </div>
           
@@ -56,7 +56,7 @@
 
           <!-- Submission -->
           <div class="col-4 text-end">
-            <button type="submit" class="btn btn-primary edit-btn">✙ Add</button>
+            <button type="submit" class="btn btn-primary add-btn">✙ Add</button>
           </div>
         </form>
       </div>
@@ -73,7 +73,7 @@
 
       <!-- Main View -->
       <div id="main-view">
-        <div class="card p-4 mb-4">
+        <div class="card p-4 mb-3">
           <h5 class="mb-0 text-center">Monthly Summary</h5>
           <div class="row text-center mt-3 border rounded border-warning main-part" id="total">
             <div class="col border-end py-2 fw-bold">Total</div>
@@ -83,7 +83,7 @@
           </div>
         </div>
 
-        <div class="card p-4 mb-4">
+        <div class="card p-4 mb-3">
           <h5 class="mb-0 text-center">All Expenses</h5>
 
           <!-- Bills Group Summary -->
@@ -104,14 +104,14 @@
               <div class="col-3 py-2">0</div>
             </div>
             <!-- Gas -->
-            <div class="row text-center mt-1" id="gas-row">
+            <div class="row text-center" id="gas-row">
               <div class="col-3 border-end py-2">Gas</div>
               <div class="col-3 border-end py-2">0</div>
               <div class="col-3 border-end py-2">0</div>
               <div class="col-3 py-2">0</div>
             </div>
             <!-- Electricity -->
-            <div class="row text-center mt-1" id="electricity-row">
+            <div class="row text-center" id="electricity-row">
               <div class="col-3 border-end py-2">Electricity</div>
               <div class="col-3 border-end py-2">0</div>
               <div class="col-3 border-end py-2">0</div>
@@ -138,21 +138,21 @@
               <div class="col-3 py-2">0</div>
             </div>
             <!-- Fish/Meat -->
-            <div class="row text-center mt-1" id="fish-meat-row">
+            <div class="row text-center" id="fish-meat-row">
               <div class="col-3 border-end py-2">Fish/Meat</div>
               <div class="col-3 border-end py-2">0</div>
               <div class="col-3 border-end py-2">0</div>
               <div class="col-3 py-2">0</div>
             </div>
             <!-- Veg -->
-            <div class="row text-center mt-1" id="veg-row">
+            <div class="row text-center" id="veg-row">
               <div class="col-3 border-end py-2">Veg</div>
               <div class="col-3 border-end py-2">0</div>
               <div class="col-3 border-end py-2">0</div>
               <div class="col-3 py-2">0</div>
             </div>
             <!-- Grocery -->
-            <div class="row text-center mt-1" id="grocery-row">
+            <div class="row text-center" id="grocery-row">
               <div class="col-3 border-end py-2">Grocery</div>
               <div class="col-3 border-end py-2">0</div>
               <div class="col-3 border-end py-2">0</div>
@@ -186,9 +186,9 @@
           </div>
         </div>
 
-        <div class="card p-4 mb-4">
+        <div class="card p-4">
           <!-- Gross Total Summary -->
-          <div class="row text-center mt-3 border rounded clickable" id="gross-group-summary">
+          <div class="row text-center border rounded clickable" id="gross-group-summary">
             <div class="col border-end py-2 fw-bold">Gross Total</div>
             <div class="col py-2 fw-bold" id="gross-total">0</div>
           </div>
@@ -205,7 +205,7 @@
               <div class="col-3 border-end py-2">Savings</div>
               <div class="col-3 border-end py-2" id="savings-value">0</div>
               <div class="col-3 border-end py-2">Home</div>
-              <div class="col-3 border-end py-2" id="home-value">0</div>
+              <div class="col-3 py-2" id="home-value">0</div>
             </div>
           </div>
         </div>
@@ -213,12 +213,12 @@
 
       
       <!-- Edit View -->
-      <div id="items-view" class="card p-4 mb-4 hidden">
+      <div id="items-view" class="card p-2 hidden">
         <!-- Edit Expenses section will be rendered here -->
         <div id="items-list"></div>
         <!-- Allowed Allocation section will be rendered here -->
         <div id="allowed-list"></div>
-        <div class="text-center mt-3">
+        <div class="text-center mb-3">
           <button class="btn btn-outline-success me-2 save-btn" onclick="saveAllEdits()">✔</button>
           <button class="btn btn-outline-danger cancel-btn" onclick="cancelEdits()">✖</button>
         </div>

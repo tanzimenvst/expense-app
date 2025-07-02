@@ -6,7 +6,6 @@ body {
   border-radius: 1rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border: none;
-  margin-bottom: 1.5rem;
 }
 
 .hidden {
@@ -32,7 +31,11 @@ body {
 }
 
 .edit-btn {
-  min-width: 89.376px;
+  min-width: 55.81px;
+}
+
+.add-btn {
+  min-width: 100px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   border-radius: 0.5rem;
   transition: all 0.2s ease-in-out;
@@ -127,11 +130,29 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   
   .card {
     border-radius: 0.75rem;
+  }
+
+  /* Apply to all .row under #main-view, excluding #gross-group-summary and #gross-details */
+  #main-view .row:not(#gross-group-summary):not(#gross-details) {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  #main-view .row:not(#gross-group-summary):not(#gross-details) > .col-3:first-child,
+  #main-view .row:not(#gross-group-summary):not(#gross-details) > .col:first-child {
+    flex: 0 0 calc(25% + 6px);
+    max-width: calc(25% + 6px);
+  }
+
+  #main-view .row:not(#gross-group-summary):not(#gross-details) > .col-3:not(:first-child),
+  #main-view .row:not(#gross-group-summary):not(#gross-details) > .col:not(:first-child) {
+    flex: 0 0 calc(25% - 2px);
+    max-width: calc(25% - 2px);
   }
 }
