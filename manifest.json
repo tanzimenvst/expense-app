@@ -1,11 +1,12 @@
 {
   "name": "Expense App",
-  "short_name": "ExpenseApp",
-  "start_url": "index.html",
+  "short_name": "Expense App",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#f8f9fa",
   "theme_color": "#5e60ce",
   "orientation": "portrait-primary",
+  "scope": "/",
   "icons": [
     {
       "src": "icons/icon-192.png",
