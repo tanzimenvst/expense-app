@@ -42,11 +42,8 @@ function formatNumberWithSign(num, showPositiveSign = false) {
 
 // Sets the date input field to the current date
 function updateDateInputToToday() {
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, '0');
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const year = today.getFullYear();
-  document.getElementById("date").value = `${day}/${month}/${year}`;
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("date").value = today;
 }
 
 // Bills and bazar details toggle
@@ -91,9 +88,9 @@ function renderItemsView(monthData) {
   monthData.expenses.forEach((entry, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td><input type="date" class="form-control form-control-sm" style="width: 115px;" value="${entry.date}" data-edit-date="${index}" /></td>
+      <td><input type="date" class="form-control form-control-sm" style="width: 110px;" value="${entry.date}" data-edit-date="${index}" /></td>
       <td>${entry.category}</td>
-      <td><input type="number" class="form-control form-control-sm" style="width: 70px;" value="${entry.amount}" data-edit-amount="${index}" /></td>
+      <td><input type="number" class="form-control form-control-sm" style="width: 65px;" value="${entry.amount}" data-edit-amount="${index}" /></td>
       <td><button class="btn btn-danger btn-sm" onclick="deleteItem(${index})">🗑️</button></td>
     `;
     tbody.appendChild(row);
@@ -510,20 +507,8 @@ document.getElementById("expense-form").addEventListener("submit", function(e) {
 
   const category = document.getElementById("category").value;
   const amount = parseFloat(document.getElementById("amount").value);
-  const dateInput = document.getElementById("date").value;
-  const dateObj = parseDateInput(dateInput);
-  
-  if (!dateObj || isNaN(dateObj.getTime())) {
-    alert("Please enter a valid date in dd/mm/yyyy format");
-    return;
-  }
-
-  // Format date as yyyy-mm-dd for storage
-  const year = dateObj.getFullYear();
-  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-  const day = String(dateObj.getDate()).padStart(2, '0');
-  const dateForStorage = `${year}-${month}-${day}`;
-  const monthKey = getMonthKey(dateForStorage);
+  const date = document.getElementById("date").value;
+  const monthKey = getMonthKey(date);
 
   if (isNaN(amount) || amount <= 0) {
     alert("Please enter a valid amount");
