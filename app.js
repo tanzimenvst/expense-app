@@ -42,11 +42,8 @@ function formatNumberWithSign(num, showPositiveSign = false) {
 
 // Sets the date input field to the current date
 function updateDateInputToToday() {
-  const today = new Date();
-  const day = String(today.getDate()).padStart(2, '0');
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const year = today.getFullYear();
-  document.getElementById("date").value = `${day}/${month}/${year}`;
+  const today = new Date().toISOString().split("T")[0];
+  document.getElementById("date").value = today;
 }
 
 // Bills and bazar details toggle
@@ -505,43 +502,13 @@ document.addEventListener("DOMContentLoaded", () => {
   renderApp();
 });
 
-// Add this new function to parse the date input:
-function parseDateInput(dateStr) {
-  if (!dateStr) return null;
-  
-  // Try dd/mm/yyyy format first
-  const parts = dateStr.split('/');
-  if (parts.length === 3) {
-    const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1;
-    const year = parseInt(parts[2], 10);
-    return new Date(year, month, day);
-  }
-  
-  // Fallback to native date parsing
-  return new Date(dateStr);
-}
-
-// Update the form submission handler:
 document.getElementById("expense-form").addEventListener("submit", function(e) {
   e.preventDefault();
 
   const category = document.getElementById("category").value;
   const amount = parseFloat(document.getElementById("amount").value);
-  const dateInput = document.getElementById("date").value;
-  const dateObj = parseDateInput(dateInput);
-  
-  if (!dateObj || isNaN(dateObj.getTime())) {
-    alert("Please enter a valid date in dd/mm/yyyy format");
-    return;
-  }
-
-  // Format date as yyyy-mm-dd for storage
-  const year = dateObj.getFullYear();
-  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
-  const day = String(dateObj.getDate()).padStart(2, '0');
-  const dateForStorage = `${year}-${month}-${day}`;
-  const monthKey = getMonthKey(dateForStorage);
+  const date = document.getElementById("date").value;
+  const monthKey = getMonthKey(date);
 
   if (isNaN(amount) || amount <= 0) {
     alert("Please enter a valid amount");
